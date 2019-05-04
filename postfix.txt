@@ -1,0 +1,32 @@
+
+  <script type="text/javascript">
+    // check float image is out of board or not
+    function changeFloatImgPos() {
+      let index = this.getAttribute("data-img-id");
+      // console.log(imageBoxes[index]);
+      var rect = imageBoxes[index].getBoundingClientRect();
+      if (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight)) {  // out of bound at bottom
+        imageBoxes[index].style.bottom = "0px";
+		console.log(rect.top);
+      }
+	  else if (rect.top <= (0)) {  // out of bound at top
+        imageBoxes[index].style.top = "0px";
+      }
+      if (rect.right >= (window.innerWidth || document.documentElement.clientWidth)) {  // out of bound at right
+        imageBoxes[index].style.right = "0px";
+		console.log(rect.left);
+      }
+	  else if (rect.left <= (0)) {  // out of bound at left
+        imageBoxes[index].style.right = "0px";
+		console.log(rect.left);
+      }
+    }
+
+    var dropImage = document.querySelectorAll('.drp'); // drop down picture
+    var imageBoxes = document.querySelectorAll('.drpCon'); // drop down picture
+    dropImage.forEach((box) => {
+      box.addEventListener('mouseenter', changeFloatImgPos);
+    });
+  </script>
+</body>
+</html>
